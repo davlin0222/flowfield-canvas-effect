@@ -4,18 +4,30 @@ export function renderCanvasEffect(canvasContext: CanvasRenderingContext2D) {
 
 	canvasContext.strokeStyle = "gray";
 	canvasContext.lineWidth = 3;
+
 	drawGridOfLines(100, 50);
+
 	function drawGridOfLines(gridCellSize: number, lineLength: number) {
 		for (let y = 0; y < height; y += gridCellSize) {
 			for (let x = 0; x < width; x += gridCellSize) {
-				drawLine(x, y, lineLength);
+				drawLine(x, y, lineLength, (x / gridCellSize) * 10);
 			}
 		}
 	}
-	function drawLine(x: number, y: number, length: number) {
+	function drawLine(
+		x: number,
+		y: number,
+		length: number,
+		angleDegrees: number
+	) {
+		const angleRadians = angleDegrees * (Math.PI / 180);
+
+		const endX = x + length * Math.cos(angleRadians);
+		const endY = y + length * Math.sin(angleRadians);
+
 		canvasContext.beginPath();
 		canvasContext.moveTo(x, y);
-		canvasContext.lineTo(x + length, y + length);
+		canvasContext.lineTo(endX, endY);
 		canvasContext.stroke();
 	}
 }
