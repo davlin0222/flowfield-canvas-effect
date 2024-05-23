@@ -2,6 +2,8 @@ import { renderCanvasEffect } from "./src/render-canvas-effect.js";
 
 window.addEventListener("load", () => {
 	const canvas = document.createElement("canvas");
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 	document.body.appendChild(canvas);
 
 	const canvasContext = canvas.getContext("2d");
