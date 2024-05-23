@@ -1,7 +1,10 @@
 export function renderCanvasEffect(canvasContext) {
     const width = canvasContext.canvas.width;
     const height = canvasContext.canvas.height;
-    canvasContext.strokeStyle = "gray";
+    const gradient = canvasContext.createLinearGradient(0, 0, width, height);
+    gradient.addColorStop(0, "#227799");
+    gradient.addColorStop(1, "#2233bb");
+    canvasContext.strokeStyle = gradient;
     canvasContext.lineWidth = 3;
     drawGridOfLines(100, 50);
     function drawGridOfLines(gridCellSize, lineLength) {
