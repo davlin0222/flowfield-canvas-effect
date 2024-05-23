@@ -1,0 +1,1 @@
+{"version":3,"file":"render-canvas-effect.js","sourceRoot":"","sources":["../../src/render-canvas-effect.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,kBAAkB,CAAC,aAAuC;IACzE,aAAa,CAAC,SAAS,GAAG,OAAO,CAAC;IAClC,aAAa,CAAC,QAAQ,CACrB,EAAE,EACF,EAAE,EACF,aAAa,CAAC,MAAM,CAAC,KAAK,GAAG,EAAE,EAC/B,aAAa,CAAC,MAAM,CAAC,MAAM,GAAG,EAAE,CAChC,CAAC;AACH,CAAC"}

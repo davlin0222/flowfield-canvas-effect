@@ -1,13 +1,14 @@
+import { renderCanvasEffect } from "./src/render-canvas-effect.js";
+
 window.addEventListener("load", () => {
 	const canvas = document.createElement("canvas");
 	document.body.appendChild(canvas);
 
-	const ctx = canvas.getContext("2d");
-	if (!ctx) {
+	const canvasContext = canvas.getContext("2d");
+	if (!canvasContext) {
 		// Also check if the context was successfully obtained
 		console.error("2D rendering context not supported!");
 		return;
 	}
-	ctx.fillStyle = "blue";
-	ctx.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
+	renderCanvasEffect(canvasContext);
 });
