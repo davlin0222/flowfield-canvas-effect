@@ -1,0 +1,15 @@
+{
+	"name": "flowfield-canvas-effect",
+	"version": "1.0.0",
+	"description": "Creating a flowfield effects in html canvas to practice using the Canvas API and typescript.",
+	"main": "index.js",
+	"scripts": {
+		"start": "tsc --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"typescript": "^5.4.5"
+	}
+}
