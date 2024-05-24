@@ -8,12 +8,26 @@ export function renderCanvasEffect(canvasContext: CanvasRenderingContext2D) {
 	canvasContext.strokeStyle = gradient;
 	canvasContext.lineWidth = 3;
 
-	drawGridOfLines(100, 50);
+	drawGridOfLines(30, 20);
+
+	makeEdgesFade();
 
 	function drawGridOfLines(gridCellSize: number, lineLength: number) {
-		for (let y = 0; y < height; y += gridCellSize) {
-			for (let x = 0; x < width; x += gridCellSize) {
-				drawLine(x, y, lineLength, (x / gridCellSize) * 10);
+		for (
+			let y = -gridCellSize;
+			y < height + gridCellSize * 2;
+			y += gridCellSize
+		) {
+			for (
+				let x = -gridCellSize;
+				x < width + gridCellSize * 2;
+				x += gridCellSize
+			) {
+				const angleMultiplier = 20;
+				const angle =
+					(x / gridCellSize) * angleMultiplier +
+					(y / gridCellSize) * angleMultiplier;
+				drawLine(x, y, lineLength, angle);
 			}
 		}
 	}
@@ -32,5 +46,34 @@ export function renderCanvasEffect(canvasContext: CanvasRenderingContext2D) {
 		canvasContext.moveTo(x, y);
 		canvasContext.lineTo(endX, endY);
 		canvasContext.stroke();
+	}
+
+	function makeEdgesFade() {
+		fadeSides();
+		fadeTopAndBottom();
+		function fadeSides() {
+			// console.log("🚀 ~ fadeSides ~ fadeSides:", fadeSides);
+			const gradient = canvasContext.createLinearGradient(0, 0, width, 0);
+			gradient.addColorStop(0, "#000000");
+			gradient.addColorStop(0.2, "transparent");
+			gradient.addColorStop(0.8, "transparent");
+			gradient.addColorStop(1, "#000000");
+			canvasContext.fillStyle = gradient;
+			canvasContext.fillRect(0, 0, width, height);
+		}
+		function fadeTopAndBottom() {
+			const gradient = canvasContext.createLinearGradient(
+				0,
+				0,
+				0,
+				height
+			);
+			gradient.addColorStop(0, "#000000");
+			gradient.addColorStop(0.2, "transparent");
+			gradient.addColorStop(0.8, "transparent");
+			gradient.addColorStop(1, "#000000");
+			canvasContext.fillStyle = gradient;
+			canvasContext.fillRect(0, 0, width, height);
+		}
 	}
 }
